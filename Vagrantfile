@@ -1,19 +1,9 @@
-Vagrant.configure("2") do |config|
-	 config.vm.define "box1" do |box1|
+#!/bin/bash;
+while [ true ]  ;do
+	used=`free -m  | awk  'NR==3  {print $4}'`
+if [  $used  -lt  1500  ]   &&   [  $used  -gt  800  ]; then
+	echo "Free memory is below 1500MB. Possible memory leak!!
 
-         box1.vm.box="ubuntu/trusty64"
+fi
 
-         box1.vm.network :forwarded_port, guest: 22, host: 10122, id: "ssh"
-
- end
-
-  config.vm.define "box2" do |box2|
-
-         box2.vm.box="scotch/box"
-
-         box2.vm.network :forwarded_port, guest: 22, host: 10222, id: "ssh"
- end
-end
-
-#This is another edit! Mwahahaha!!!
-#This is Svetlana's change!
+done.
